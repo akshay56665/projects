@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./link") %>
+    <title>Blog</title>
+  </head>
+  <body>
+    <%- include("./nav") %>
+    <div class="container mt-3">
+      <div class="container text-center my-3">
+        <h2><%= blog.title %></h2>
+        <img class="my-3" src="<%= blog.coverImageURL %>" width="1000px" />
+      </div>
+      <pre class="mt-3"><%= blog.body %></pre>
+    </div>
+
+    <div
+      class="container card mt-3"
+      style="border-radius: 20px; border-color: rgb(117, 115, 115)"
+    >
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <div class="mb-3">
+            <a href="/blog/profile">
+              <img
+                src="<%= blog.createdBy.profileImage %>"
+                width="30px"
+                style="margin-right: 10px"
+              />
+            </a>
+            <%= blog.createdBy.fullName %>
+          </div>
+          <footer class="blockquote-footer">Contributer</footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <h4>Comments (<%= comments.length%>)</h4>
+
+      <% if (locals.user) { %>
+      <form action="/blog/Comment/<%= blog._id %>" method="post">
+        <input
+          class="form-control form-control-lg"
+          type="text"
+          placeholder="Comments Please..."
+          aria-label=".form-control-lg example"
+          name="content"
+        />
+        <button class="btn btn-primary mt-3">Post</button>
+      </form>
+      <% } %>
+      
+      <div class="mt-3">
+        <% comments.forEach(comment => { %>
+        <img
+          src="<%= comment.createdBy.profileImage %>"
+          width="30px"
+          style="margin-right: 10px"
+        />
+        <%= comment.createdBy.fullName %>
+        <br>
+        <p><%= comment.content %></p>
+        <% }) %>
+      </div>
+    </div>
+
+    <%- include("./script") %>
+  </body>
+</html>

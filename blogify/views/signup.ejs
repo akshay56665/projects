@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./link') %>
+    <title>SignUp</title>
+  </head>
+
+  <body>
+    <div
+      class="card"
+      style="
+        height: auto;
+        width: 22rem;
+        margin: 95px auto;
+        float: none;
+        margin-bottom: 10px;
+        padding: 45px 10px;
+      "
+    >
+      <div class="card-body">
+        <h3 class="card-title" style="text-align: center">SignUp</h3>
+        <form action="/user/signup" method="post">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              aria-describedby="fullName"
+              placeholder="abc@example.com"
+              name="fullName"
+            />
+          </div>
+          
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="email"
+              placeholder="abc@example.com"
+              name="email"
+            />
+          </div>
+          
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+            />
+          </div>
+          
+          <button
+            type="submit"
+            class="btn btn-outline-secondary"
+            style="margin: 10px 97px; padding: 5px 28px; border-radius: 20px"
+          >
+            SignUp
+          </button>
+        </form>
+      </div>
+    </div>
+
+    
+    <%- include('./script') %>
+  </body>
+</html>
